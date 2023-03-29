@@ -7,7 +7,7 @@
     "distDir": "../out"
   },
   "package": {
-    "productName": "remo-app",
+    "productName": "Remo App",
     "version": "0.1.0"
   },
   "tauri": {
@@ -58,7 +58,7 @@
         "fullscreen": false,
         "height": 600,
         "resizable": true,
-        "title": "remo-app",
+        "title": "Remo App",
         "width": 800
       }
     ]
