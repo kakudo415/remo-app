@@ -1,15 +1,26 @@
 import Link from 'next/link'
+import { useEffect, useState } from 'react'
 
-export default function Home() {  
+import { Config, getConfig } from '../libs/config'
+
+export default function Home() {
+  const [config, setConfig] = useState<Config>({ accessToken: "", appliances: [] })
+  useEffect(() => {
+    getConfig()
+      .then((conf) => {
+        setConfig(conf);
+      })
+  }, [])
+
   return (
     <>
       <header>
-        <Link href='/config'>設定</Link>
+        <Link href='/configuration'>設定</Link>
       </header>
       <main>
         <ul>
           {
-            appliances.map((appliance) => {
+            config.appliances.map((appliance) => {
               switch (appliance.type) {
                 case 'AC':
                   if (appliance.aircon) {
@@ -28,7 +39,7 @@ export default function Home() {
                         {
                           appliance.light.buttons.map((button) => {
                             return (
-                              <button onClick={() => sendLightSignal(accessToken, appliance.id, button.name)}>{button.label}</button>
+                              <button onClick={() => sendLightSignal(config.accessToken, appliance.id, button.name)}>{button.label}</button>
                             )
                           })
                         }
