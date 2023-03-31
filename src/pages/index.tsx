@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
+import styles from '@/styles/Home.module.css'
 
 import { Config, getConfig } from '../libs/config'
 
@@ -15,10 +16,12 @@ export default function Home() {
   return (
     <>
       <header>
-        <Link href='/configuration'>設定</Link>
+        <div>
+          <Link href='/configuration' className={styles.config}><img src="/images/icons/gear.png" alt="Gear" /></Link>
+        </div>
       </header>
       <main>
-        <ul>
+        <ul className={styles.controllers}>
           {
             config.appliances.map((appliance) => {
               switch (appliance.type) {
@@ -26,8 +29,10 @@ export default function Home() {
                   if (appliance.aircon) {
                     return (
                       <li>
-                        <h2>{appliance.nickname}</h2>
-                        <input type="range" name="temp" id="temp" />
+                        <h2>🌡️ {appliance.nickname}</h2>
+                        <div className={styles.controller}>
+                          <input type="range" name="temp" id="temp" />
+                        </div>
                       </li>
                     )
                   }
@@ -35,14 +40,23 @@ export default function Home() {
                   if (appliance.light) {
                     return (
                       <li>
-                        <h2>{appliance.nickname}</h2>
-                        {
-                          appliance.light.buttons.map((button) => {
-                            return (
-                              <button onClick={() => sendLightSignal(config.accessToken, appliance.id, button.name)}>{button.label}</button>
-                            )
-                          })
-                        }
+                        <h2>💡 {appliance.nickname}</h2>
+                        <div className={styles.controller}>
+                          <div className={styles.buttons}>
+                            {
+                              appliance.light.buttons.map((button) => {
+                                return (
+                                  <div className={styles.button}>
+                                    <button onClick={() => sendLightSignal(config.accessToken, appliance.id, button.name)}>
+                                      <img src={`/images/icons/${button.image}.png`} alt={button.image} />
+                                    </button>
+                                    <span>{tidyName(button.name)}</span>
+                                  </div>
+                                )
+                              })
+                            }
+                          </div>
+                        </div>
                       </li>
                     )
                   }
@@ -66,4 +80,19 @@ function sendLightSignal(accessToken: string, applianceID: string, buttonName: s
   }).then((res) => {
     console.log(res);
   });
+}
+
+function tidyName(name: string): string {
+  switch (name) {
+    case 'on': return 'ON'
+    case 'off': return 'OFF'
+    case 'on-100': return '全灯'
+    case 'on-favorite': return 'お気に入り'
+    case 'night': return '常夜灯'
+    case 'bright-up': return '明るく'
+    case 'bright-down': return '暗く'
+    case 'colortemp-up': return '色を温かく'
+    case 'colortemp-down': return '色を冷たく'
+    default: return name
+  }
 }

@@ -1,0 +1,58 @@
+header .config {
+  margin-left: auto;
+}
+
+ul.controllers > li {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: #3A3A3A;
+  border-radius: 1rem;
+}
+
+ul.controllers > li:first-child {
+  margin-top: 0;
+}
+
+ul.controllers > li > h2 {
+  font-weight: bold;
+}
+
+ul.controllers > li > div.controller {
+  margin-top: 1rem;
+}
+
+ul.controllers > li > div.controller div.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+ul.controllers > li > div.controller div.buttons > div.button {
+  flex-basis: calc(100% / 3);
+  text-align: center;
+}
+
+ul.controllers > li > div.controller div.buttons > div.button > button {
+  height: 4rem;
+  width: 4rem;
+  padding: 1rem;
+  background: #444;
+  cursor: pointer;
+  border-radius: 2rem;
+}
+
+ul.controllers > li > div.controller div.buttons > div.button > button:hover {
+  background: #555;
+}
+
+ul.controllers > li > div.controller div.buttons > div.button > button > img {
+  height: auto;
+  width: 2rem;
+}
+
+ul.controllers > li > div.controller div.buttons > div.button > span {
+  display: block;
+  margin: 1rem 0 1rem;
+  font-size: 0.8rem;
+  text-align: center;
+}

@@ -1,0 +1,30 @@
+body {
+  color: #FFF;
+  background: #333;
+}
+
+header {
+  /* background: #3A3A3A; */
+}
+
+header > div {
+  max-width: 40rem;
+  margin: 0 auto;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+}
+
+header > div a {
+  padding: 1rem;
+}
+
+header > div img {
+  height: 1rem;
+  width: auto;
+}
+
+main {
+  max-width: 40rem;
+  margin: 1rem auto;
+}

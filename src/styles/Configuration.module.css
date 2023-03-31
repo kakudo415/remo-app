@@ -1,0 +1,45 @@
+header .config {
+  margin-right: auto;
+}
+
+main form.updateConfigForm label {
+  line-height: 2rem;
+  font-size: 0.85rem;
+}
+
+main form.updateConfigForm input[type="text"] {
+  display: block;
+  width: 100%;
+  padding: 0.5rem 1rem;
+  border: 1px solid #555;
+  border-radius: 0.5rem;
+}
+
+main form.updateConfigForm p {
+  margin-top: 1rem;
+}
+
+main form.updateConfigForm p a {
+  color: #0088D8;
+  text-decoration: underline;
+  padding: 0 0.25rem;
+}
+
+main form.updateConfigForm p a:hover {
+  text-decoration: none;
+}
+
+main form.updateConfigForm button {
+  display: block;
+  width: 100%;
+  margin-top: 1rem;
+  padding: 1rem;
+  background: #0077C8;
+  cursor: pointer;
+  border-radius: 0.5rem;
+}
+
+main form.updateConfigForm button:hover {
+  background: #0088D8;
+}
+  

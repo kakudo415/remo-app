@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { BaseDirectory, readTextFile, writeTextFile } from '@tauri-apps/api/fs'
+import styles from '@/styles/Configuration.module.css'
 
 import { getConfig, saveConfig, Config } from '../libs/config'
 import { useEffect, useState } from 'react'
@@ -27,12 +28,15 @@ export default function Configuration() {
   return (
     <>
       <header>
-        <Link href='/'>戻る</Link>
+        <div>
+          <Link href='/' className={styles.home}><img src="/images/icons/home.png" alt="Home" /></Link>
+        </div>
       </header>
       <main>
-        <h1>設定</h1>
-        <form onSubmit={updateConfig}>
+        <form onSubmit={updateConfig} className={styles.updateConfigForm}>
+          <label htmlFor="accessToken">Access Token</label>
           <input type="text" name="accessToken" id="accessToken" defaultValue={config.accessToken} />
+          <p>Access Tokenは<a href="https://home.nature.global/">home.nature.global</a>から取得してください</p>
           <button type="submit">読み込む</button>
         </form>
       </main>
