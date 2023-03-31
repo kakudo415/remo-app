@@ -46,7 +46,7 @@ export default function Home() {
                             {
                               appliance.light.buttons.map((button) => {
                                 return (
-                                  <div className={styles.button}>
+                                  <div className={styles.button} key={button.name}>
                                     <button onClick={() => sendLightSignal(config.accessToken, appliance.id, button.name)}>
                                       <img src={`/images/icons/${button.image}.png`} alt={button.image} />
                                     </button>
